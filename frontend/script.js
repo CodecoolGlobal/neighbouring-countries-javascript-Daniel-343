@@ -7,7 +7,7 @@ function listCountriesIntoDropdown (data) {
 
   const selectElement = document.getElementById('all');
 
-  const sorted = data.sort((a, b) => a.name.common - b.name.common);
+  const sorted = data.sort((a, b) => a.name.common.localeCompare(b.name.common));
   sorted.forEach((country) => {
     selectElement.insertAdjacentHTML('beforeend', optionElement(country.name.common));
   });
