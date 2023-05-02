@@ -25,15 +25,16 @@ function drawCountryData(countryName) {
     }
   });
 
-  // Draw HTML tags
-
+  // Put data in HTML tags
+  
 }
 
 function checkSelectedCountry () {
   const selectElement = document.getElementById('all');
-  const countryID = document.getElementById('country');
   selectElement.addEventListener('change', function (event) {
-    //countryID.textContent = `Kiválasztott ország: ${event.target.value}`;
+    const isDisplay = document.getElementById('isDisplay');
+    if (event.target.value !== 'Select a country from the list') isDisplay.style.display = 'block';
+    else isDisplay.style.display = 'none';
     drawCountryData(event.target.value);
   });
 }
