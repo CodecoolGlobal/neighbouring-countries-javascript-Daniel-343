@@ -10,14 +10,38 @@ function listCountriesIntoDropdown (data) {
   });
 }
 
+function drawCountryData(countryName) {
+  // Get data
+  let thisCountry = [];
+  countries.forEach(country => {
+    if (country.name.common === countryName) {
+      thisCountry.push(country.name.common);
+      thisCountry.push(country.capital);
+      thisCountry.push(country.region);
+      thisCountry.push(country.subregion);
+    }
+  });
 
+  // Put data in HTML tags
+  
+}
 
-
-
+function checkSelectedCountry () {
+  const selectElement = document.getElementById('all');
+  selectElement.addEventListener('change', function (event) {
+    const isDisplay = document.getElementById('isDisplay');
+    if (event.target.value !== 'Select a country from the list') isDisplay.style.display = 'block';
+    else isDisplay.style.display = 'none';
+    drawCountryData(event.target.value);
+  });
+}
 
 /* global countries */
 const loadEvent = function () {
   // Main
   listCountriesIntoDropdown(countries);
+  checkSelectedCountry();
+
+  
 };
 window.addEventListener('load', loadEvent);

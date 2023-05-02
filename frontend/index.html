@@ -15,7 +15,7 @@
 		<div class="control display-inline">
 			<div class="select is-rounded">
 				<select id="all">
-					<option selected>Country</option>
+					<option selected>Select a country from the list</option>
 				</select>
 			</div>
 		</div>
@@ -25,7 +25,25 @@
 	</nav>
 
 	<main id="country">
-
+		<div id="isDisplay" style="display:none">
+			<div class="card correction">
+				<div class="card-content">
+					<div class="media">
+						<div class="media-left">
+							<figure class="image is-256x256">
+								<img src="https://flagcdn.com/kw.svg" style="width: 512px;" alt="Placeholder image">
+							</figure>
+						</div>
+						<div class="content">
+							<h1 id="commonName">Common Name</h1>
+							<h4 id="capitalCity">Capital City</h4>
+							<h2 id="region">Region</h2>
+							<h3 id="subRegion">Subregion</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 </body>
 </html>

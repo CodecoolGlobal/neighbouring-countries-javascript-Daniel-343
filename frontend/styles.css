@@ -5,3 +5,8 @@ nav {
 .display-inline {
   display: inline;
 }
+
+.correction {
+  margin-left: 10%;
+  margin-right: 10%;
+}
