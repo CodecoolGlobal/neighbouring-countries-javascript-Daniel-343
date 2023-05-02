@@ -3,15 +3,17 @@ function optionElement(content) {
 }
 
 function listCountriesIntoDropdown (data) {
-  console.log(data);
-
   const selectElement = document.getElementById('all');
-  console.log(selectElement);
-
-  data.forEach((country) => {
+  const sorted = data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+  sorted.forEach((country) => {
     selectElement.insertAdjacentHTML('beforeend', optionElement(country.name.common));
   });
 }
+
+
+
+
+
 
 /* global countries */
 const loadEvent = function () {
