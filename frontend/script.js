@@ -4,15 +4,18 @@ function optionElement(content) {
 
 function listCountriesIntoDropdown (data) {
   console.log(data);
-  const selectElement = document.querySelector('#all select');
+
+  const selectElement = document.getElementById('all');
   console.log(selectElement);
+
   data.forEach((country) => {
     selectElement.insertAdjacentHTML('beforeend', optionElement(country.name.common));
   });
 }
 
-function main () {
-  /* global countries */
+/* global countries */
+const loadEvent = function () {
+  // Main
   listCountriesIntoDropdown(countries);
-}
-main();
+};
+window.addEventListener('load', loadEvent);
