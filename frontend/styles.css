@@ -1,5 +1,7 @@
 nav {
-  display: inline-block;
+  padding: 1%;
+  margin: 1%;
+  text-align: center;
 }
 
 .display-inline {
@@ -9,4 +11,8 @@ nav {
 .correction {
   margin-left: 10%;
   margin-right: 10%;
+}
+
+#flag {
+  width: 512px;
 }
