@@ -69,7 +69,7 @@ function neighbour(searchedBy){
   console.log(searchedBy);
   const sortedBorders = bordersObject.sort((a, b) => b[`${searchedBy}`] - a[`${searchedBy}`]);
   console.log(sortedBorders);
-  return sortedBorders[0];
+  drawCountryData(sortedBorders[0].name.common);
 }
 
 function fromBorderToObject(border){
