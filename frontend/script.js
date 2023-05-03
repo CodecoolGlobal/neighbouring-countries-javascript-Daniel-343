@@ -56,10 +56,43 @@ function checkSelectedCountry () {
   });
 }
 
+function neighbour(searchedBy){
+  let border;
+  const showedCountry = document.getElementById('commonName').innerHTML;
+  countries.forEach((country) => {
+    if (showedCountry === country.name.common){
+      border = country.borders;
+    }
+  });
+  console.log(border);
+  const sortedBorders = fromBorderToObject(border).sort((a, b) => b[`${searchedBy}`].localeCompare(a[`${searchedBy}`]));
+  console.log(sortedBorders);
+  return sortedBorders[0];
+}
+
+function fromBorderToObject(border){
+  const result = [];
+  for (let i = 0; i < border.length; i++){
+    countries.forEach((country) => {
+      if (country.cioc === border[i]){
+        result.push(country);
+      }
+    });
+  }
+  return result;
+}
+
 /* global countries */
 const loadEvent = function () {
   // Main
   listCountriesIntoDropdown(countries);
   checkSelectedCountry();
+  const arr = [document.getElementById('population'), document.getElementById('area')];
+  for (let i = 0; i < arr.length; i++){
+    arr[i].addEventListener('click', (event)=>{
+      neighbour(event.target.id);
+    });
+  }
+
 };
 window.addEventListener('load', loadEvent);
