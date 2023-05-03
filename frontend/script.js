@@ -45,6 +45,11 @@ function drawCountryData(countryName) {
   document.getElementById('capitalCity').innerHTML = `Capital city: <b>${thisCountry[2]}</b>`;
   document.getElementById('region').innerHTML = `Region: <b>${thisCountry[3]}</b>`;
   document.getElementById('subRegion').innerHTML = `Subregion: <b>${thisCountry[4]}</b>`;
+
+  document.getElementById('commonName').setAttribute('value', `${thisCountry[1]}`);
+  document.getElementById('capitalCity').setAttribute('value', `${thisCountry[2]}`);
+  document.getElementById('region').setAttribute('value', `${thisCountry[3]}`);
+  document.getElementById('subRegion').setAttribute('value', `${thisCountry[4]}`);
 }
 
 /**
@@ -65,7 +70,7 @@ function checkSelectedCountry () {
 
 function neighbour(searchedBy){
   let border;
-  const showedCountry = document.getElementById('commonName').innerHTML;
+  const showedCountry = document.getElementById('commonName').getAttribute('value');
   countries.forEach((country) => {
     if (showedCountry === country.name.common){
       border = country.borders;
