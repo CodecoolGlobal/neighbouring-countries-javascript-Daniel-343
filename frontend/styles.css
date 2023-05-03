@@ -1,3 +1,22 @@
+body {
+  background-image: url('icons/pexels-aaditya-arora-592753copy.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*.bg-image {
+  background-image: url(icons/pexels-aaditya-arora-592753.jpg);
+  
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100vh;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}*/
+
 nav {
   height: 20vh;
   position: relative;
@@ -36,18 +55,18 @@ footer{
 
 .correction {
   position: relative;
-/*   margin-left: 0 auto; */
+  /*margin-left: 0 auto; */
   display: inline-block;
+  border-radius: 20px;
 }
 .turn-page{
-
 /*   padding: 1%;
  */  width: 100vw;
   text-align: center;
 }
 
 #flag {
-  height: 200px;
+  height: 30vh;
 }
 #isDisplay{
   text-align: center;

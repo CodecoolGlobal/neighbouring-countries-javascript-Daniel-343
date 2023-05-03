@@ -11,19 +11,43 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	<div class="bg-image"></div>
+
 	<nav id="toolbar">
 		<div class="all-nav">
 
-			<div class="control margin-bottom">
+			<div class="control margin-bottom  has-icons-left">
 				<div class="select is-rounded">
 					<select id="all">
 						<option selected>Select a country from the list</option>
 					</select>
+					<span class="icon is-left">
+						<img src="icons/earth-line.svg" width="25px">
+					</span>
 				</div>
 			</div>
 	
-			<button class="button is-rounded display-inline margin-side" id="population">Neighbour with the largest population</button>
-			<button class="button is-rounded display-inline margin-side" id="area">Neighbour with the largest area</button>
+			<!-- <button class="button is-rounded display-inline margin-side" id="population">Neighbour with the largest population</button>
+			<button class="button is-rounded display-inline margin-side" id="area">Neighbour with the largest area</button> -->
+
+			<button class="button is-rounded margin-side" id="population">
+				<span class="icon is-small">
+					<img src="icons/group-line.svg">
+				</span>
+				<span>
+					Neighbour with the largest population
+				</span>
+			</button>
+
+			<button class="button is-rounded margin-side" id="area">
+				<span class="icon is-small">
+					<img src="icons/map-pin-2-line.svg">
+				</span>
+				<span>
+					Neighbour with the largest area
+				</span>
+			</button>
+
 		</div>
 	</nav>
 
@@ -50,8 +74,26 @@
 	</main>
 	<footer>
 		<div class="turn-page">
-			<button class="button is-rounded display-inline margin-side" id="previous">Previous</button>
-			<button class="button is-rounded display-inline margin-side" id="next">Next</button>
+			<!-- <button class="button is-rounded display-inline margin-side" id="previous">Previous</button> -->
+			<!-- <button class="button is-rounded display-inline margin-side" id="next">Next</button> -->
+
+			<button class="button is-rounded margin-side" id="previous">
+				<span class="icon is-small">
+					<img src="icons/arrow-left-circle-line.svg">
+				</span>
+				<span>
+					Previous
+				</span>
+			</button>
+
+			<button class="button is-rounded margin-side" id="next">
+				<span>
+					Next
+				</span>
+				<span class="icon is-small">
+					<img src="icons/arrow-right-circle-line.svg">
+				</span>
+			</button>
 	
 		</div>
 		
