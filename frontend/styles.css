@@ -7,10 +7,28 @@ nav {
 .display-inline {
   display: inline;
 }
+.display-none {
+  display: none;
+}
+.display-block {
+  display: block;
+}
+.margin-bottom{
+  margin-bottom: 2vh;
+}
+.margin-side{
+  margin-left: 1vh;
+  margin-right: 1vh;;
+}
 
 .correction {
   margin-left: 10%;
   margin-right: 10%;
+}
+.turn-page{
+  padding: 1%;
+  margin: 1%;
+  text-align: center;
 }
 
 #flag {

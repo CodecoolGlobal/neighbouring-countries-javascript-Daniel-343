@@ -94,9 +94,9 @@ function fromBorderToObject(border){
 
 function changeSelectedText(text){ //text a megjelenített ország név
   const selectElement = document.getElementById('all');
-  for (let i =0; i<SORTEDCOUNTRY.length; i++){
-    if(SORTEDCOUNTRY[i].name.common === text){
-      selectElement.selectedIndex = i+1;
+  for (let i = 0; i < SORTEDCOUNTRY.length; i++){
+    if (SORTEDCOUNTRY[i].name.common === text){
+      selectElement.selectedIndex = i + 1;
     }
   }
 }
