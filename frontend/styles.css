@@ -27,10 +27,15 @@ nav {
 }
 .turn-page{
   padding: 1%;
-  margin: 1%;
+  width: 100vw;
+  height: 100vh;
   text-align: center;
+  display: flex;
 }
 
 #flag {
   width: 512px;
+}
+#country{
+  height: 100vh;
 }
