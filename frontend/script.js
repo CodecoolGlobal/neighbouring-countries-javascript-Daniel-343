@@ -65,7 +65,7 @@ function neighbour(searchedBy){
     }
   });
   console.log(border);
-  const sortedBorders = fromBorderToObject(border).sort((a, b) => b[`${searchedBy}`].localeCompare(a[`${searchedBy}`]));
+  const sortedBorders = fromBorderToObject(border);
   console.log(sortedBorders);
   return sortedBorders[0];
 }
@@ -74,7 +74,7 @@ function fromBorderToObject(border){
   const result = [];
   for (let i = 0; i < border.length; i++){
     countries.forEach((country) => {
-      if (country.cioc === border[i]){
+      if (country.cca3 === border[i]){
         result.push(country);
       }
     });
