@@ -65,7 +65,9 @@ function neighbour(searchedBy){
     }
   });
   console.log(border);
-  const sortedBorders = fromBorderToObject(border);
+  const bordersObject = fromBorderToObject(border);
+  console.log(searchedBy);
+  const sortedBorders = bordersObject.sort((a, b) => b[`${searchedBy}`] - a[`${searchedBy}`]);
   console.log(sortedBorders);
   return sortedBorders[0];
 }
@@ -87,9 +89,11 @@ const loadEvent = function () {
   // Main
   listCountriesIntoDropdown(countries);
   checkSelectedCountry();
+
   const arr = [document.getElementById('population'), document.getElementById('area')];
   for (let i = 0; i < arr.length; i++){
     arr[i].addEventListener('click', (event)=>{
+      console.log(event.target.id);
       neighbour(event.target.id);
     });
   }
