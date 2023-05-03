@@ -41,10 +41,10 @@ function drawCountryData(countryName) {
 
   // Put data in HTML tags
   document.getElementById('flag').src = `${thisCountry[0]}`;
-  document.getElementById('commonName').innerHTML = `${thisCountry[1]}`;
-  document.getElementById('capitalCity').innerHTML = `${thisCountry[2]}`;
-  document.getElementById('region').innerHTML = `${thisCountry[3]}`;
-  document.getElementById('subRegion').innerHTML = `${thisCountry[4]}`;
+  document.getElementById('commonName').innerHTML = `Name: <b>${thisCountry[1]}</b>`;
+  document.getElementById('capitalCity').innerHTML = `Capital city: <b>${thisCountry[2]}</b>`;
+  document.getElementById('region').innerHTML = `Region: <b>${thisCountry[3]}</b>`;
+  document.getElementById('subRegion').innerHTML = `Subregion: <b>${thisCountry[4]}</b>`;
 }
 
 /**
