@@ -1,9 +1,22 @@
 nav {
-  padding: 1%;
-  margin: 1%;
+  height: 20vh;
+  position: relative;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
-
+main{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+}
 .display-inline {
   display: inline;
 }
@@ -23,22 +36,27 @@ nav {
 
 .correction {
   position: relative;
-  margin-left: 0 auto;
+/*   margin-left: 0 auto; */
   display: inline-block;
 }
 .turn-page{
-  padding: 1%;
-  width: 100vw;
-  height: auto;
+
+/*   padding: 1%;
+ */  width: 100vw;
   text-align: center;
 }
 
 #flag {
   height: 200px;
 }
-#country{
-  height: auto;
-}
 #isDisplay{
   text-align: center;
+}
+.all-nav{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }

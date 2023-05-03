@@ -12,16 +12,19 @@
 </head>
 <body>
 	<nav id="toolbar">
-		<div class="control display-block margin-bottom">
-			<div class="select is-rounded">
-				<select id="all">
-					<option selected>Select a country from the list</option>
-				</select>
-			</div>
-		</div>
+		<div class="all-nav">
 
-		<button class="button is-rounded display-inline margin-side" id="population">Neighbour with the largest population</button>
-		<button class="button is-rounded display-inline margin-side" id="area">Neighbour with the largest area</button>
+			<div class="control margin-bottom">
+				<div class="select is-rounded">
+					<select id="all">
+						<option selected>Select a country from the list</option>
+					</select>
+				</div>
+			</div>
+	
+			<button class="button is-rounded display-inline margin-side" id="population">Neighbour with the largest population</button>
+			<button class="button is-rounded display-inline margin-side" id="area">Neighbour with the largest area</button>
+		</div>
 	</nav>
 
 	<main id="country">
@@ -44,11 +47,14 @@
 				</div>
 			</div>
 		</div>
+	</main>
+	<footer>
 		<div class="turn-page">
 			<button class="button is-rounded display-inline margin-side" id="previous">Previous</button>
 			<button class="button is-rounded display-inline margin-side" id="next">Next</button>
 	
 		</div>
-	</main>
+		
+	</footer>
 </body>
 </html>
