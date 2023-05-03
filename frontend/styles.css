@@ -81,3 +81,32 @@ footer{
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
+
+/* Portrait */
+@media screen 
+  and (device-width: 411px) 
+  and (device-height: 900px) 
+  /*and (-webkit-device-pixel-ratio: 3) 
+  and (orientation: portrait)*/ {
+
+    #flag {
+      width: 5vh;
+    }
+
+}
+
+@media screen and (max-width: 420px) {
+  #flag {
+    height: auto;
+  }
+
+  .media-left {
+    display: block;
+    width: 100%;
+  }
+
+  .content {
+    display: block;
+  }
+}
