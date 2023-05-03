@@ -12,8 +12,8 @@ function listCountriesIntoDropdown (data) {
 
 function drawCountryData(countryName) {
   // Get data
-  let thisCountry = [];
-  countries.forEach(country => {
+  const thisCountry = [];
+  countries.forEach((country) => {
     if (country.name.common === countryName) {
       thisCountry.push(country.flags.svg);
       thisCountry.push(country.name.common);
