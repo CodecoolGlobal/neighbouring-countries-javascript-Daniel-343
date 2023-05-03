@@ -2,6 +2,11 @@ function optionElement(content) {
   return `<option>${content}</option>`;
 }
 
+/**
+ * This function puts all our countries from a database by their name to a dropdown.
+ * @constructor
+ * @param {Array} data - Database
+ */
 function listCountriesIntoDropdown (data) {
   const selectElement = document.getElementById('all');
   const sorted = data.sort((a, b) => a.name.common.localeCompare(b.name.common));
@@ -10,6 +15,11 @@ function listCountriesIntoDropdown (data) {
   });
 }
 
+/**
+ * This function will draw the received data out to the screen with DOM manipulation.
+ * @constructor
+ * @param {string} countryName - A name of a country.
+ */
 function drawCountryData(countryName) {
   // Get data
   const thisCountry = [];
@@ -31,6 +41,9 @@ function drawCountryData(countryName) {
   document.getElementById('subRegion').innerHTML = `${thisCountry[4]}`;
 }
 
+/**
+ * This function checks if a selected country is selected in the dropdown
+ */
 function checkSelectedCountry () {
   const selectElement = document.getElementById('all');
   selectElement.addEventListener('change', function (event) {
