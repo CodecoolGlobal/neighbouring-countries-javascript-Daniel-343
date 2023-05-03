@@ -1,5 +1,8 @@
+let SELECTED_COUNTRY = '';
+const SORTEDCOUNTRY = sorting(countries);
+
 function optionElement(content) {
-  return `<option>${content}</option>`;
+  return `<option value="${content}">${content}</option>`;
 }
 
 /**
@@ -7,12 +10,15 @@ function optionElement(content) {
  * @constructor
  * @param {Array} data - Database
  */
-function listCountriesIntoDropdown (data) {
+function listCountriesIntoDropdown () {
   const selectElement = document.getElementById('all');
-  const sorted = data.sort((a, b) => a.name.common.localeCompare(b.name.common));
-  sorted.forEach((country) => {
+  SORTEDCOUNTRY.forEach((country) => {
     selectElement.insertAdjacentHTML('beforeend', optionElement(country.name.common));
   });
+}
+
+function sorting(data){
+  return data.sort((a, b) => a.name.common.localeCompare(b.name.common));
 }
 
 /**
@@ -52,6 +58,7 @@ function checkSelectedCountry () {
     if (event.target.value !== 'Select a country from the list') isDisplay.style.display = 'block';
     else isDisplay.style.display = 'none';
 
+    SELECTED_COUNTRY = event.target.value;
     drawCountryData(event.target.value);
   });
 }
@@ -70,6 +77,7 @@ function neighbour(searchedBy){
   const sortedBorders = bordersObject.sort((a, b) => b[`${searchedBy}`] - a[`${searchedBy}`]);
   console.log(sortedBorders);
   drawCountryData(sortedBorders[0].name.common);
+  changeSelectedText(sortedBorders[0].name.common);
 }
 
 function fromBorderToObject(border){
@@ -84,10 +92,19 @@ function fromBorderToObject(border){
   return result;
 }
 
+function changeSelectedText(text){ //text a megjelenített ország név
+  const selectElement = document.getElementById('all');
+  for (let i =0; i<SORTEDCOUNTRY.length; i++){
+    if(SORTEDCOUNTRY[i].name.common === text){
+      selectElement.selectedIndex = i+1;
+    }
+  }
+}
+
 /* global countries */
 const loadEvent = function () {
   // Main
-  listCountriesIntoDropdown(countries);
+  listCountriesIntoDropdown();
   checkSelectedCountry();
 
   const arr = [document.getElementById('population'), document.getElementById('area')];
