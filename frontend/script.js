@@ -1,5 +1,7 @@
 let SELECTED_COUNTRY = '';
 const SORTEDCOUNTRY = sorting(countries);
+const STORED_COUNTRIES = [];
+let countryIndex;
 
 function optionElement(content) {
   return `<option value="${content}">${content}</option>`;
@@ -26,7 +28,7 @@ function sorting(data){
  * @constructor
  * @param {string} countryName - A name of a country.
  */
-function drawCountryData(countryName) {
+function drawCountryData(countryName, trueOrFalse) {
   // Get data
   const thisCountry = [];
   countries.forEach((country) => {
@@ -50,6 +52,11 @@ function drawCountryData(countryName) {
   document.getElementById('capitalCity').setAttribute('value', `${thisCountry[2]}`);
   document.getElementById('region').setAttribute('value', `${thisCountry[3]}`);
   document.getElementById('subRegion').setAttribute('value', `${thisCountry[4]}`);
+  if (trueOrFalse){
+    STORED_COUNTRIES.push(thisCountry[1]);
+    countryIndex = STORED_COUNTRIES.length;
+    console.log(STORED_COUNTRIES);
+  }
 }
 
 /**
@@ -64,7 +71,8 @@ function checkSelectedCountry () {
     else isDisplay.style.display = 'none';
 
     SELECTED_COUNTRY = event.target.value;
-    drawCountryData(event.target.value);
+    console.log(STORED_COUNTRIES);
+    drawCountryData(event.target.value, true);
   });
 }
 
@@ -82,7 +90,7 @@ function neighbour(searchedBy){
   const sortedBorders = bordersObject.sort((a, b) => b[`${searchedBy}`] - a[`${searchedBy}`]);
   console.log(sortedBorders);
   if (sortedBorders.length > 0) {
-    drawCountryData(sortedBorders[0].name.common);
+    drawCountryData(sortedBorders[0].name.common, true);
     changeSelectedText(sortedBorders[0].name.common);
   } else drawErrorMessage();
 }
@@ -140,11 +148,29 @@ function neighbourButtonsEventListener () {
   }
 }
 
+function showHistory(){
+  const prevButtons = document.querySelector('#previous');
+  prevButtons.addEventListener('click', () => {
+    if (countryIndex > 0){
+      drawCountryData(STORED_COUNTRIES[countryIndex - 1], false);
+      countryIndex--;
+    }
+  });
+  const nextButtons = document.querySelector('#next');
+  nextButtons.addEventListener('click', () => {
+    if (countryIndex < STORED_COUNTRIES.length - 1){
+      drawCountryData(STORED_COUNTRIES[countryIndex + 1], false);
+      countryIndex++;
+    }
+  });
+}
+
 /* global countries */
 const loadEvent = function () {
   // Main
   listCountriesIntoDropdown();
   checkSelectedCountry();
   neighbourButtonsEventListener();
+  showHistory();
 };
 window.addEventListener('load', loadEvent);
