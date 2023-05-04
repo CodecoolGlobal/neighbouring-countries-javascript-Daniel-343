@@ -52,10 +52,30 @@ function drawCountryData(countryName, trueOrFalse) {
   document.getElementById('capitalCity').setAttribute('value', `${thisCountry[2]}`);
   document.getElementById('region').setAttribute('value', `${thisCountry[3]}`);
   document.getElementById('subRegion').setAttribute('value', `${thisCountry[4]}`);
+
   if (trueOrFalse){
     STORED_COUNTRIES.push(thisCountry[1]);
-    countryIndex = STORED_COUNTRIES.length;
+    countryIndex = STORED_COUNTRIES.length - 1;
     console.log(STORED_COUNTRIES);
+  }
+
+  const prevButtons = document.querySelector('#previous');
+  const nextButtons = document.querySelector('#next');
+  if (countryIndex !== 0 && countryIndex !== STORED_COUNTRIES.length - 1) { // Ha nem széleken vagyunk
+    prevButtons.disabled = false;
+    nextButtons.disabled = false;
+  }
+  if (STORED_COUNTRIES.length === 1) { // Ha csak egy elem van még a historyban
+    prevButtons.disabled = true;
+    nextButtons.disabled = true;
+  }
+  if (countryIndex === STORED_COUNTRIES.length - 1 && countryIndex !== 0) { // Ha jobbra vagyunk és nem balra
+    prevButtons.disabled = false;
+    nextButtons.disabled = true;
+  }
+  if (countryIndex === 0 && countryIndex !== STORED_COUNTRIES.length - 1) { // Ha balra vagyunk és nem jobbra
+    prevButtons.disabled = true;
+    nextButtons.disabled = false;
   }
 }
 
@@ -151,17 +171,13 @@ function neighbourButtonsEventListener () {
 function showHistory(){
   const prevButtons = document.querySelector('#previous');
   prevButtons.addEventListener('click', () => {
-    if (countryIndex > 0){
-      drawCountryData(STORED_COUNTRIES[countryIndex - 1], false);
-      countryIndex--;
-    }
+    countryIndex--;
+    drawCountryData(STORED_COUNTRIES[countryIndex], false);
   });
   const nextButtons = document.querySelector('#next');
   nextButtons.addEventListener('click', () => {
-    if (countryIndex < STORED_COUNTRIES.length - 1){
-      drawCountryData(STORED_COUNTRIES[countryIndex + 1], false);
-      countryIndex++;
-    }
+    countryIndex++;
+    drawCountryData(STORED_COUNTRIES[countryIndex], false);
   });
 }
 
