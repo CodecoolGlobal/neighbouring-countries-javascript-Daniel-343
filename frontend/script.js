@@ -131,21 +131,20 @@ function checkAlertClosing () {
   });
 }
 
+function neighbourButtonsEventListener () {
+  const arr = [document.getElementById('population'), document.getElementById('area')];
+  for (let i = 0; i < arr.length; i++){
+    arr[i].addEventListener('click', (event)=>{
+      neighbour(event.currentTarget.id);
+    });
+  }
+}
+
 /* global countries */
 const loadEvent = function () {
   // Main
   listCountriesIntoDropdown();
   checkSelectedCountry();
-
-  const arr = [document.getElementById('population'), document.getElementById('area')];
-  for (let i = 0; i < arr.length; i++){
-    arr[i].addEventListener('click', (event)=>{
-      neighbour(event.target.id);
-    });
-  }
-
-  // Close alert
-  
-
+  neighbourButtonsEventListener();
 };
 window.addEventListener('load', loadEvent);

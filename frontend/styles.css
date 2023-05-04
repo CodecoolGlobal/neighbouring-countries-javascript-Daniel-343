@@ -47,8 +47,11 @@ article{
   z-index: 5;
 }
 
+
+
 .display-inline {
   display: inline;
+  transition-duration: .5s;
 }
 .display-none {
   display: none;
