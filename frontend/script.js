@@ -76,24 +76,29 @@ function neighbour(searchedBy){
       border = country.borders;
     }
   });
-  console.log(border);
+  //console.log(border);
   const bordersObject = fromBorderToObject(border);
   console.log(searchedBy);
   const sortedBorders = bordersObject.sort((a, b) => b[`${searchedBy}`] - a[`${searchedBy}`]);
   console.log(sortedBorders);
-  drawCountryData(sortedBorders[0].name.common);
-  changeSelectedText(sortedBorders[0].name.common);
+  if (sortedBorders.length > 0) {
+    drawCountryData(sortedBorders[0].name.common);
+    changeSelectedText(sortedBorders[0].name.common);
+  } else drawErrorMessage();
 }
 
 function fromBorderToObject(border){
   const result = [];
-  for (let i = 0; i < border.length; i++){
-    countries.forEach((country) => {
-      if (country.cca3 === border[i]){
-        result.push(country);
-      }
-    });
+  if (typeof border !== 'undefined') {
+    for (let i = 0; i < border.length; i++){
+      countries.forEach((country) => {
+        if (country.cca3 === border[i]){
+          result.push(country);
+        }
+      });
+    }
   }
+
   return result;
 }
 
@@ -106,6 +111,26 @@ function changeSelectedText(text){ //text a megjelenített ország név
   }
 }
 
+function drawErrorMessage () {
+  const errorElement = document.getElementById('article');
+  if (errorElement.className.includes('display-none')) {
+    errorElement.classList.remove('display-none');
+    errorElement.classList.add('display-block');
+  }
+  checkAlertClosing();
+}
+
+function checkAlertClosing () {
+  const errorElement = document.getElementById('article');
+  const closeButton = document.getElementById('alert');
+  closeButton.addEventListener('click', function () {
+    if (errorElement.className.includes('display-block')) {
+      errorElement.classList.remove('display-block');
+      errorElement.classList.add('display-none');
+    }
+  });
+}
+
 /* global countries */
 const loadEvent = function () {
   // Main
@@ -115,10 +140,12 @@ const loadEvent = function () {
   const arr = [document.getElementById('population'), document.getElementById('area')];
   for (let i = 0; i < arr.length; i++){
     arr[i].addEventListener('click', (event)=>{
-      console.log(event.target.id);
       neighbour(event.target.id);
     });
   }
+
+  // Close alert
+  
 
 };
 window.addEventListener('load', loadEvent);
